@@ -9,7 +9,7 @@ var publishingError = false;
 Task("Upload-Coverage-Result-coveralls")
     .Does(() =>
 {
-    var coverageFile = "C:\\temp\\coverage.xml";
+    var coverageFile = ".\\sample.xml";
 
     CoverallsNet(new FilePath(coverageFile), CoverallsNetReportType.OpenCover, new CoverallsNetSettings()
     {
