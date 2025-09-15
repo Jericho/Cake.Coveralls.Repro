@@ -6,6 +6,13 @@
 
 var publishingError = false;
 
+
+Setup(context =>
+{
+    Information("Increasing verbosity to diagnostic.");
+    context.Log.Verbosity = Verbosity.Diagnostic;
+});
+
 Task("Upload-Coverage-Result-coveralls")
     .Does(() =>
 {
