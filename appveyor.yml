@@ -13,10 +13,11 @@ install:
   
 # scripts to run before build
 before_build:
+  - dotnet --info
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
-  - ps: dotnet cake repro.cake
+  - ps: .\build.ps1 repro.cake
 
 # scripts to run after build
 after_build:

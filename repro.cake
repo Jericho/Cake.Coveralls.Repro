@@ -13,17 +13,16 @@ Setup(context =>
     context.Log.Verbosity = Verbosity.Diagnostic;
 });
 
-Task("Upload-Coverage-Result-coveralls")
-    .Does(() =>
-{
-    var coverageFile = ".\\sample.xml";
 
-    CoverallsNet(new FilePath(coverageFile), CoverallsNetReportType.OpenCover, new CoverallsNetSettings()
-    {
+Task("Upload-Coverage-Result-Coveralls")
+	.Does(() =>
+{
+	CoverallsNet(new FilePath(".\\sample.xml"), CoverallsNetReportType.OpenCover, new CoverallsNetSettings()
+	{
         RepoToken = "My Coveralls Token",
-        UseRelativePaths = true
-    });
-}).OnError(exception =>
+		UseRelativePaths = true
+	});
+}).OnError (exception =>
 {
     Information(exception.Message);
     Information($"Failed to upload coverage result to Coveralls, but continuing with next Task...");
@@ -31,9 +30,8 @@ Task("Upload-Coverage-Result-coveralls")
 });
 
 
-
 Task("Default")
-	.IsDependentOn("Upload-Coverage-Result-coveralls")
+	.IsDependentOn("Upload-Coverage-Result-Coveralls")
     .Finally(() =>
 {
     if (publishingError)
