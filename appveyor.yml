@@ -9,7 +9,8 @@ init:
 
 # scripts that run after cloning repository
 install:
-
+  - dotnet tool restore
+  
 # scripts to run before build
 before_build:
 
